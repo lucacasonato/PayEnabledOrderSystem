@@ -479,7 +479,7 @@
             var cartCount = 0;
 
             window.onload = function() {
-                initSheetInterface("68292331783-k6d5e4t4eebvijlvbq3aed0b4f593cuf.apps.googleusercontent.com", "1gM5aaDBmYpFn2A7jfC7shk5-vaMHTZcAo0ZSD7c2-7Y", test)
+                initSheetInterface("68292331783-k6d5e4t4eebvijlvbq3aed0b4f593cuf.apps.googleusercontent.com", "1TBulpTfiHAdXg_yAExV6gl5pjeln98vZvLX9mGk15LU", test)
             }
 
             test = function() {
@@ -639,7 +639,7 @@
             }
 
             getEmptySlot = function(emptySlot) {
-                get("A1:A9", function(returnValue){
+                get("Order!A1:A9", function(returnValue){
                     for (i = 0; i < 9; i++) {
                         if (returnValue[i] == "FALSE") {
                             emptySlot(i + 1)
@@ -652,13 +652,13 @@
 
             fillEmptySlot = function(value, print, number) {
                 getEmptySlot(function(emptySlot) {
-                    setRow("A" + emptySlot, ["true"]);
-                    setRow("B" + emptySlot, [value]);
-                    setRow("E" + emptySlot, [print]);
-                    get("F1", function(largestNumber) {
+                    setRow("Order!A" + emptySlot, ["true"]);
+                    setRow("Order!B" + emptySlot, [value]);
+                    setRow("Order!E" + emptySlot, [print]);
+                    get("Order!F1", function(largestNumber) {
                         number(parseInt(largestNumber) + 1);
-                        setRow("F1", [parseInt(largestNumber) + 1]);
-                        setRow("C" + emptySlot, [parseInt(largestNumber) + 1]);
+                        setRow("Order!F1", [parseInt(largestNumber) + 1]);
+                        setRow("Order!C" + emptySlot, [parseInt(largestNumber) + 1]);
                     });
                 });
             }

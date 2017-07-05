@@ -38,7 +38,7 @@
     </body>
     <script>
         window.onload = function() {
-            initSheetInterfaceWithoutDisplayedButtons("406195898690-0cml7f3lu43f88uou3t5jsqivd61sbpv.apps.googleusercontent.com", "1gM5aaDBmYpFn2A7jfC7shk5-vaMHTZcAo0ZSD7c2-7Y", test)
+            initSheetInterfaceWithoutDisplayedButtons("406195898690-0cml7f3lu43f88uou3t5jsqivd61sbpv.apps.googleusercontent.com", "1TBulpTfiHAdXg_yAExV6gl5pjeln98vZvLX9mGk15LU", test)
         }
 
         function getParameterByName(name, url) {
@@ -57,7 +57,7 @@
             tableID = getParameterByName("tableID");
 
 
-            get("B" + tableID + ":C" + tableID, function(value) {
+            get("Order!B" + tableID + ":C" + tableID, function(value) {
                 var dateVar = new Date();
 
                 var dateFull = dateVar.getDate() + "/" + dateVar.getMonth() + "/" + dateVar.getFullYear() + " " + dateVar.getHours() + ":" + dateVar.getMinutes() + ":" + dateVar.getSeconds()
@@ -69,7 +69,7 @@
 
                 document.getElementById("signout-button").setAttribute("hidden", "hidden");
 
-                window.print()
+                //window.print()
 
                 window.close();
             });
