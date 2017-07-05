@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kitchen Client</title>
+        <meta charset='utf-8' />
+        <script src="sheetInteface.js"></script>
+        <script src="https://craig.global.ssl.fastly.net/js/mousetrap/mousetrap.min.js?a4098"></script>
+        <script async defer src="https://apis.google.com/js/api.js"></script>
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+        <link rel="manifest" href="/favicons/manifest.json">
+        <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#f7b200">
+        <link rel="shortcut icon" href="/favicons/favicon.ico">
+        <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">
+    </head>
+    <style type="text/css">
+        .tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
+        .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;text-align: center;}
+        .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal; width: 33%; height: 33%;}
+        .tg .tg-yw4l{vertical-align:top}
+        .red {background: red; color: white; border-color: black;}
+        .yellow {background: yellow; color: black;}
+        .green {background: lime; color: black;}
+        .white {background: white; color: black;}
+    </style>
+    <body>
+        <table class="tg" style="height:100%;width:100%; position: absolute; top: 0; bottom: 0; left: 0; right: 0;border:1px solid">
+            <col width="33%" />
+            <col width="33%" />
+            <col width="33%" />
+            <tr style="height: 33%;">
+                <td class="white" id="1"></td>
+                <td class="white" id="2"></td>
+                <td class="white" id="3"></td>
+            </tr>
+            <tr style="height: 33%;">
+                <td class="white" id="4"></td>
+                <td class="white" id="5"></td>
+                <td class="white" id="6"></td>
+            </tr>
+            <tr style="height: 33%;">
+                <td class="white" id="7"></td>
+                <td class="white" id="8"></td>
+                <td class="white" id="9"></td>
+            </tr>
+            <tr style="height: 1%;">
+                <td class="white" id="function"></td>
+            </tr>
+        </table>
+
+        <pre id="content"></pre>
+
+
+        <script type="text/javascript">
+            var content = document.getElementById("content").innerHTML
+            var state = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+            window.onload = function() {
+                initSheetInterface("406195898690-0cml7f3lu43f88uou3t5jsqivd61sbpv.apps.googleusercontent.com", "1gM5aaDBmYpFn2A7jfC7shk5-vaMHTZcAo0ZSD7c2-7Y", test)
+            }
+
+            test = function() {
+                listStartup();
+            }
+
+            window.setInterval(function(){
+              list();
+            }, 3000);
+
+            list = function() {
+                get("A1:E9", function(returnValue){
+                    for (i = 0; i < 9; i++) {
+                        if (returnValue[i][0] == "TRUE") {
+                            b = parseInt(i) + 1;
+                            document.getElementById(b).innerHTML = "<h1 id='code" + b + "'>" + returnValue[i][2] + "</h1><br />" + "<a id='data" + b + "'>" + returnValue[i][1] + "</a>"
+                            if (returnValue[i][3] == 0 && document.getElementById(b).className == "white") {
+                                document.getElementById(b).className = "red";
+                            } else if (returnValue[i][3] == 1 && document.getElementById(b).className == "red") {
+                                document.getElementById(b).className = "yellow";
+                            } else if (returnValue[i][3] == 2 && document.getElementById(b).className == "yellow") {
+                                document.getElementById(b).className = "green";
+                            }
+
+                            if(returnValue[i][4] == "TRUE") {
+                                printHandler(b);
+                                setRow("E" + b, ["FALSE"])
+                            }
+
+                        } else {
+                            b = parseInt(i) + 1;
+                            document.getElementById(b).className = "white";
+                            document.getElementById(b).innerHTML = "";
+                        }
+                    }
+                });
+            }
+
+            listStartup = function() {
+                get("A1:E9", function(returnValue){
+                    for (i = 0; i < 9; i++) {
+                        if (returnValue[i][0] == "TRUE") {
+                            b = parseInt(i) + 1;
+                            document.getElementById(b).innerHTML = "<h1 id='code" + b + "'>" + returnValue[i][2] + "</h1><br />" + "<a id='data" + b + "'>" + returnValue[i][1] + "</a>"
+                            if (returnValue[i][3] == 0) {
+                                document.getElementById(b).className = "red";
+                            } else if (returnValue[i][3] == 1) {
+                                document.getElementById(b).className = "yellow";
+                            } else if (returnValue[i][3] == 2) {
+                                document.getElementById(b).className = "green";
+                            }
+
+                            if(returnValue[i][4] == "TRUE") {
+                                printHandler(b);
+                                setRow("E" + b, ["FALSE"])
+                            }
+
+                        } else {
+                            b = parseInt(i) + 1;
+                            document.getElementById(b).className = "white";
+                            document.getElementById(b).innerHTML = "";
+                        }
+                    }
+                });
+            }
+
+            keyHandler = function(key) {
+                if(document.getElementById("code" + key).innerHTML == "") {
+                } else {
+                    get("A" + key + ":D" + key, function(stageIn) {
+                        if (stageIn[0][0] == "TRUE") {
+                            stage = parseInt(stageIn[0][3])
+                            if (stage == 0) {
+                                setRow("D" + key, ["1"]);
+                                document.getElementById(key).className = "yellow";
+                            } else if (stage == 1) {
+                                setRow("D" + key, ["2"]);
+                                document.getElementById(key).className = "green";
+                            } else if (stage == 2) {
+                                setRow("A" + key, ["FALSE"]);
+                                setRow("B" + key, [""]);
+                                setRow("C" + key, [""]);
+                                setRow("D" + key, ["0"]);
+                                document.getElementById(key).className = "white";
+                                document.getElementById(key).innerHTML = "";
+                            }
+                        }
+                    });
+                }
+
+            }
+
+            printHandler = function(key) {
+                if(document.getElementById("code" + key).innerHTML == "") {
+                } else {
+                    window.open("http://" +location.host + "/print.html?tableID=" + key);
+                }
+            }
+
+            Mousetrap.bind('l', list);
+            Mousetrap.bind('1', function() {keyHandler("1")});
+            Mousetrap.bind('2', function() {keyHandler("2")});
+            Mousetrap.bind('3', function() {keyHandler("3")});
+            Mousetrap.bind('4', function() {keyHandler("4")});
+            Mousetrap.bind('5', function() {keyHandler("5")});
+            Mousetrap.bind('6', function() {keyHandler("6")});
+            Mousetrap.bind('7', function() {keyHandler("7")});
+            Mousetrap.bind('8', function() {keyHandler("8")});
+            Mousetrap.bind('9', function() {keyHandler("9")});
+
+            Mousetrap.bind('alt+1', function() {printHandler("1")});
+            Mousetrap.bind('alt+2', function() {printHandler("2")});
+            Mousetrap.bind('alt+3', function() {printHandler("3")});
+            Mousetrap.bind('alt+4', function() {printHandler("4")});
+            Mousetrap.bind('alt+5', function() {printHandler("5")});
+            Mousetrap.bind('alt+6', function() {printHandler("6")});
+            Mousetrap.bind('alt+7', function() {printHandler("7")});
+            Mousetrap.bind('alt+8', function() {printHandler("8")});
+            Mousetrap.bind('alt+9', function() {printHandler("9")});
+
+            Mousetrap.bind('alt+a', handleAuthClick);
+        </script>
+    </body>
+</html>

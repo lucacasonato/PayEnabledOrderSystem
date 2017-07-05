@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <script async defer src="https://apis.google.com/js/api.js"></script>
+        <script src="sheetInteface.js"></script>
+        <script src="https://craig.global.ssl.fastly.net/js/mousetrap/mousetrap.min.js?a4098"></script>
+    </head>
+    <style>
+        .big {
+            font-family:Arial, sans-serif;
+            font-size:24px;
+        }
+
+        .small {
+            font-family:Arial, sans-serif;
+            font-size:12px;
+        }
+
+        .tiny {
+            font-family:Arial, sans-serif;
+            font-size:8px;
+        }
+        .table {
+            border-style:solid;
+            border-width:1px;
+            border-color: black;
+
+        }
+    </style>
+    <body>
+        <div id="time" class="tiny">
+        </div>
+        <table><td class="table"><img src="favicons/android-chrome-512x512.png" width="20" height="20">
+        <a class="small">Enjoy!&nbsp</a></td></table>
+        <a id="code" class="big">
+        </a>
+        <div id="data" class="small">
+        </div>
+    </body>
+    <script>
+        window.onload = function() {
+            initSheetInterfaceWithoutDisplayedButtons("406195898690-0cml7f3lu43f88uou3t5jsqivd61sbpv.apps.googleusercontent.com", "1gM5aaDBmYpFn2A7jfC7shk5-vaMHTZcAo0ZSD7c2-7Y", test)
+        }
+
+        function getParameterByName(name, url) {
+        if (!url) {
+          url = window.location.href;
+        }
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        test = function() {
+            tableID = getParameterByName("tableID");
+
+
+            get("B" + tableID + ":C" + tableID, function(value) {
+                var dateVar = new Date();
+
+                var dateFull = dateVar.getDate() + "/" + dateVar.getMonth() + "/" + dateVar.getFullYear() + " " + dateVar.getHours() + ":" + dateVar.getMinutes() + ":" + dateVar.getSeconds()
+
+                document.getElementById("code").innerHTML = value[0][1];
+                document.getElementById("data").innerHTML = value[0][0];
+                document.getElementById("time").innerHTML = dateFull;
+
+
+                document.getElementById("signout-button").setAttribute("hidden", "hidden");
+
+                window.print()
+
+                window.close();
+            });
+        }
+
+
+        Mousetrap.bind('ctrl+alt+shift+a', handleAuthClick);
+    </script>
+</html>
