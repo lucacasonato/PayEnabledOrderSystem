@@ -123,6 +123,21 @@
             });
         }
 
+        function setRowWithResponse(range, value, responseToUser) {
+            gapi.client.sheets.spreadsheets.values.update({
+                spreadsheetId: sheetID,
+                "range": range,
+                "valueInputOption": "USER_ENTERED",
+                "majorDimension": "ROWS",
+                "values": [
+                    value
+                ]
+            }).then(function(response) {
+                console.log(response);
+                responseToUser();
+            });
+        }
+
         function setColumn(range, value) {
             gapi.client.sheets.spreadsheets.values.update({
                 spreadsheetId: sheetID,
@@ -134,6 +149,21 @@
                 ]
             }).then(function(response) {
                 console.log(response);
+            });
+        }
+
+        function setColumnWithResponse(range, value, responseToUser) {
+            gapi.client.sheets.spreadsheets.values.update({
+                spreadsheetId: sheetID,
+                "range": range,
+                "valueInputOption": "USER_ENTERED",
+                "majorDimension": "COLUMNS",
+                "values": [
+                    value
+                ]
+            }).then(function(response) {
+                console.log(response);
+                responseToUser();
             });
         }
 

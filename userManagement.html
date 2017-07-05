@@ -15,9 +15,12 @@
         <meta name="msapplication-config" content="/favicons/browserconfig.xml">
         <meta name="theme-color" content="#ffffff">
     </head>
+    <style>
+        table, th, td {border: 1px solid black;}
+    </style>
     <body>
         <button onclick="refresh()">Refresh</button>
-        <div id="data"></div>
+        <div id="dataDiv"></div>
     </body>
     <script>
         window.onload = function() {
@@ -26,19 +29,72 @@
 
         test = function() {}
 
-        refresh = function {
+        refresh = function() {
             get("Pay!A1:D20", function(returnValue) {
-                document.getElementById("data").innerHTML == "<table style='table, th, td {border: 1px solid black;}'><tr><th>Uniqe ID</th><th>Passcode</th><th>Tokens</th><th>Function</th></tr>"
+                var table = "";
 
-                for (i = 0; i < 9; i++) {
+                table = "<table style='text-align: center; vertical-align: top;' style='height:100%;width:100%; position: absolute; top: 0; bottom: 0; left: 0; right: 0;border:1px solid;'><col width='20%' /><col width='20%' /><col width='20%' /><col width='20%' /><tr><th>Unique ID</th><th>Passcode</th><th>Tokens</th><th>Function</th></tr>"
+
+                for (i = 0; i < 20; i++) {
                     n = i;
                     b = i + 1;
-
                     if(returnValue[n][0] == "TRUE") {
-                        document.getElementById("data").innerHTML == document.getElementById("data").innerHTML + "<tr><td><input id='" + n + ".0' value='" + returnValue[n][1] + "'></td><td><input id='" + n + ".1' value='" + returnValue[n][2] + "'></td><td><input id='" + n + ".2' value='" + returnValue[n][3] + "'></td><td>button onclick='update(" + n +")'>Update</button></td><td>button onclick='remove(" + n +")'>Remove</button></td></tr>"
+                        table = table + "<tr><td><input id='" + n + ".0' value='" + returnValue[n][1] + "'></td><td><input id='" + n + ".1' value='" + returnValue[n][2] + "'></td><td><input id='" + n + ".2' value='" + returnValue[n][3] + "'></td><td><button onclick='update(" + n +")'>Update</button><a> </a><button onclick='remove(" + n +")'>Remove</button></td></tr>";
                     }
+
+                    if(n == 19){
+                        table = table + "<tr><td><input id='x.0' placeholder='Unique ID'></td><td><input id='x.1' placeholder='Passcode'></td><td><input id='x.2' placeholder='Tokens'></td><td><button onclick='newItem()'>Add</button><a> </a></td></tr>";
+                        table = table + "</table>";
+                        document.getElementById("dataDiv").innerHTML = table;
+                    }
+
                 }
+
             });
         }
+
+        remove = function(itemID) {
+            if (confirm("Click ok to remove, otherwise click cancel!")) {
+                setRowWithResponse("Pay!A" + (parseInt(itemID) + 1) + ":D" + (parseInt(itemID) + 1), ["FALSE", "", "", ""], function() {
+                    refresh()
+                });
+            }
+        }
+
+        update = function(itemID) {
+            if (!isNaN(parseInt(document.getElementById(itemID + ".1").value)) && !isNaN(parseInt(document.getElementById(itemID + ".2").value))){
+                setRowWithResponse("Pay!A" + (parseInt(itemID) + 1) + ":D" + (parseInt(itemID) + 1), ["TRUE", document.getElementById(itemID + ".0").value, document.getElementById(itemID + ".1").value, document.getElementById(itemID + ".2").value], function() {
+                    refresh()
+                });
+            } else {
+                alert("Input fields two and three have to be numbers!")
+            }
+
+        }
+
+        newItem = function() {
+            if (!isNaN(parseInt(document.getElementById("x.1").value)) && !isNaN(parseInt(document.getElementById("x.2").value))){
+                getEmptySlot(function(slot) {
+                    setRowWithResponse("Pay!A" + (parseInt(slot)) + ":D" + (parseInt(slot)), ["TRUE", document.getElementById("x.0").value, document.getElementById("x.1").value, document.getElementById("x.2").value], function() {
+                        refresh()
+                    });
+                });
+            } else {
+                alert("Input fields two and three have to be numbers!")
+            }
+
+        }
+
+        getEmptySlot = function(emptySlot) {
+                get("Pay!A1:A20", function(returnValue){
+                    for (i = 0; i < 9; i++) {
+                        if (returnValue[i] == "FALSE") {
+                            emptySlot(i + 1)
+                            return
+                        }
+                    }
+
+                });
+            }
     </script>
 </html>
