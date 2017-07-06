@@ -70,7 +70,7 @@
             }, 3000);
 
             list = function() {
-                get("Order!AA1:E9", function(returnValue){
+                get("Order!A1:E9", function(returnValue){
                     for (i = 0; i < 9; i++) {
                         if (returnValue[i][0] == "TRUE") {
                             b = parseInt(i) + 1;
@@ -138,10 +138,7 @@
                                 setRow("Order!D" + key, ["2"]);
                                 document.getElementById(key).className = "green";
                             } else if (stage == 2) {
-                                setRow("Order!A" + key, ["FALSE"]);
-                                setRow("Order!B" + key, [""]);
-                                setRow("Order!C" + key, [""]);
-                                setRow("Order!D" + key, ["0"]);
+                                setRow("Order!A" + key + ":D" + key, ["FALSE", "", "", "0"]);
                                 document.getElementById(key).className = "white";
                                 document.getElementById(key).innerHTML = "";
                             }

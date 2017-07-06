@@ -603,9 +603,9 @@
                             security = document.getElementById("security").value;
                             tokens = parseInt(document.getElementById("total_cost").innerHTML);
 
-
                             get("Pay!A1:D20", function(returnValue) {
                                 for (i = 0; i < 20; i++) {
+
                                     n = i
                                     b = i + 1
                                     if (returnValue[n][0] == "TRUE") {
@@ -623,6 +623,8 @@
                                         }
                                     }
                                 }
+                                alert("This account does not exist!");
+
                             });
                           }
                         }, {
@@ -655,8 +657,10 @@
                             });
                             cartCount = 0;
 
-                            total_cost.innerHTML = "0";
-
+                            document.getElementById("total_cost").innerHTML = "0";
+                            document.getElementById("id").value = "";
+                            document.getElementById("security").value = "";
+                            document.getElementById("qrfile").value = "";
                             cart.setAttribute("data-badge", cartCount);
                             cart_tooltip.innerHTML = "<b>Cart is empty!</b>";
 
@@ -684,7 +688,10 @@
                             cart.setAttribute("data-badge", cartCount);
                             cart_tooltip.innerHTML = "<b>Cart is empty!</b>";
 
-                            total_cost.innerHTML = "0";
+                            document.getElementById("total_cost").innerHTML = "0";
+                            document.getElementById("id").value = "";
+                            document.getElementById("security").value = "";
+                            document.getElementById("qrfile").value = "";
 
                             order_btn.setAttribute("disabled", "disabled");
                             order_tooltip.innerHTML = "Add something to the cart before you can order!";
@@ -711,7 +718,10 @@
 
                 cartCount = 0;
 
-                total_cost.innerHTML = 0;
+                document.getElementById("total_cost").innerHTML = "0";
+                document.getElementById("id").value = "";
+                document.getElementById("security").value = "";
+                document.getElementById("qrfile").value = "";
 
                 cart.setAttribute("data-badge", cartCount);
                 cart_tooltip.innerHTML = "<b>Cart is empty!</b>";

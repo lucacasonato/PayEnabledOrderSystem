@@ -172,6 +172,7 @@
                 spreadsheetId: sheetID,
                 "range": range
             }).then(function(response) {
+                console.log(response);
                 if (response.result.values.length > 0) {
                     rows = response.result.values;
                     returnValue(rows);
