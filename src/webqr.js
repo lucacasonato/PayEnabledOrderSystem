@@ -215,8 +215,6 @@ function setwebcam2(options)
         n.mozGetUserMedia({video: options, audio: false}, success, error);
     }
 
-    document.getElementById("qrimg").style.opacity=0.2;
-    document.getElementById("webcamimg").style.opacity=1.0;
 
     stype=1;
     setTimeout(captureToCanvas, 500);
@@ -228,10 +226,6 @@ function setimg()
     if(stype==2)
         return;
     document.getElementById("outdiv").innerHTML = imghtml;
-    //document.getElementById("qrimg").src="qrimg.png";
-    //document.getElementById("webcamimg").src="webcam2.png";
-    document.getElementById("qrimg").style.opacity=1.0;
-    document.getElementById("webcamimg").style.opacity=0.2;
     var qrfile = document.getElementById("qrfile");
     qrfile.addEventListener("dragenter", dragenter, false);
     qrfile.addEventListener("dragover", dragover, false);
