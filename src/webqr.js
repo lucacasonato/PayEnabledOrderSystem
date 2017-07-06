@@ -225,7 +225,6 @@ function setimg()
 	document.getElementById("result").innerHTML="";
     if(stype==2)
         return;
-    document.getElementById("outdiv").innerHTML = imghtml;
     var qrfile = document.getElementById("qrfile");
     qrfile.addEventListener("dragenter", dragenter, false);
     qrfile.addEventListener("dragover", dragover, false);

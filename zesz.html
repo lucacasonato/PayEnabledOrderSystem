@@ -5,14 +5,13 @@
         <script src="src/webqr.js"></script>
     </head>
     <body>
-        <div id="outdiv" style="width:160px;height:120px;border: solid;border-width: 3px 3px 3px 3px;"></div>
-        <input hidden type="file" onchange="handleFiles(this.files)">
+        <canvas hidden id="qr-canvas"></canvas>
+        <input id="qrfile" type="file" name="file" accept="image/*" capture="camera" onchange="handleFiles(this.files)">
         <div id="result"></div>
-        <canvas id="qr-canvas" width="800" height="600" style="display:none; width: 800px; height: 600px;"></canvas>
     </body>
     <script>
-        initCanvas(800, 600);
+        initCanvas(800, 600)
         qrcode.callback = read;
-        setwebcam()
+        setimg()
     </script>
 </html>
