@@ -5,17 +5,16 @@
         <script src="https://webqr.com/webqr.js"></script>
     </head>
     <body>
-                <div id="outdiv"></div>
-        <input type="file" onchange="handleFiles(this.files)">
+        <div id="qrimg"></div>
+        <div id="webcamimg"></div>
+        <div id="outdiv" style="width:160px;height:120px;border: solid;border-width: 3px 3px 3px 3px;"></div>
+        <input hidden type="file" onchange="handleFiles(this.files)">
         <div id="result"></div>
-        <canvas id="qr-canvas" width="800" height="600" style="width: 800px; height: 600px;"></canvas>
+        <canvas id="qr-canvas" width="800" height="600" style="display:none; width: 800px; height: 600px;"></canvas>
     </body>
     <script>
-        initCanvas();
+        initCanvas(800, 600);
         qrcode.callback = read;
-
-                setimg()
-
-
+        setwebcam()
     </script>
 </html>
