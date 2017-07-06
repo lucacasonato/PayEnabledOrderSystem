@@ -111,6 +111,9 @@
               <!-- Title -->
                 <span class="mdl-layout-title">Order</span>
                 <div class="mdl-layout-spacer"></div>
+                <span class="mdl-layout-title" id="total_cost">0</span>
+                <span class="mdl-layout-title">&nbsp Token</span>
+                <a>&nbsp &nbsp</a>
                 <div class="material-icons mdl-badge mdl-badge--overlap" data-badge="0" id="cart">shopping_cart</div>
                 <div class="mdl-tooltip mdl-tooltip--large" data-mdl-for="cart" id="cart_tooltip">
                     <b>Cart is empty!</b>
@@ -162,7 +165,7 @@
                                 <tr>
                                     <td class="mdl-data-table__cell--non-numeric">Red Wine</td>
                                     <td>
-                                        <button onclick="addToCart('Red Wine')" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                        <button onclick="addToCart('Red Wine', 3)" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                                           <i class="material-icons">add</i>
                                         </button>
                                     </td>
@@ -170,7 +173,7 @@
                                 <tr>
                                     <td class="mdl-data-table__cell--non-numeric">White Wine</td>
                                     <td>
-                                        <button onclick="addToCart('White Wine')" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                        <button onclick="addToCart('White Wine', 3)" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                                           <i class="material-icons">add</i>
                                         </button>
                                     </td>
@@ -178,7 +181,7 @@
                                 <tr>
                                     <td class="mdl-data-table__cell--non-numeric">Rose Wine</td>
                                     <td>
-                                        <button onclick="addToCart('Rose Wine')" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                        <button onclick="addToCart('Rose Wine', 3)" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                                           <i class="material-icons">add</i>
                                         </button>
                                     </td>
@@ -201,7 +204,7 @@
                                 <tr>
                                     <td class="mdl-data-table__cell--non-numeric">Erdinger Beer</td>
                                     <td>
-                                        <button onclick="addToCart('Erdinger')" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                        <button onclick="addToCart('Erdinger', 2)" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                                           <i class="material-icons">add</i>
                                         </button>
                                     </td>
@@ -209,7 +212,7 @@
                                 <tr>
                                     <td class="mdl-data-table__cell--non-numeric">Weizen Beer</td>
                                     <td>
-                                        <button onclick="addToCart('Weizen')" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                        <button onclick="addToCart('Weizen', 2)" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                                           <i class="material-icons">add</i>
                                         </button>
                                     </td>
@@ -217,7 +220,7 @@
                                 <tr>
                                     <td class="mdl-data-table__cell--non-numeric">Radler</td>
                                     <td>
-                                        <button onclick="addToCart('Radler')" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                        <button onclick="addToCart('Radler', 2)" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                                           <i class="material-icons">add</i>
                                         </button>
                                     </td>
@@ -249,7 +252,7 @@
                                 <tr>
                                     <td class="mdl-data-table__cell--non-numeric">Coca Cola</td>
                                     <td>
-                                        <button onclick="addToCart('Coca Cola')" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                        <button onclick="addToCart('Coca Cola', 2)" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                                           <i class="material-icons">add</i>
                                         </button>
                                     </td>
@@ -257,7 +260,7 @@
                                 <tr>
                                     <td class="mdl-data-table__cell--non-numeric">Sprite</td>
                                     <td>
-                                        <button onclick="addToCart('Sprite')" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                        <button onclick="addToCart('Sprite', 2)" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                                           <i class="material-icons">add</i>
                                         </button>
                                     </td>
@@ -265,7 +268,7 @@
                                 <tr>
                                     <td class="mdl-data-table__cell--non-numeric">Fanta</td>
                                     <td>
-                                        <button onclick="addToCart('Fanta')" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                        <button onclick="addToCart('Fanta', 2)" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                                           <i class="material-icons">add</i>
                                         </button>
                                     </td>
@@ -273,7 +276,7 @@
                                 <tr>
                                     <td class="mdl-data-table__cell--non-numeric">Milk</td>
                                     <td>
-                                        <button onclick="addToCart('Milk')" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                        <button onclick="addToCart('Milk', 1)" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                                           <i class="material-icons">add</i>
                                         </button>
                                     </td>
@@ -296,7 +299,7 @@
                                 <tr>
                                     <td class="mdl-data-table__cell--non-numeric">Still Water</td>
                                     <td>
-                                        <button onclick="addToCart('Still Water')" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                        <button onclick="addToCart('Still Water', 1)" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                                           <i class="material-icons">add</i>
                                         </button>
                                     </td>
@@ -304,7 +307,7 @@
                                 <tr>
                                     <td class="mdl-data-table__cell--non-numeric">Still Water with Lemon</td>
                                     <td>
-                                        <button onclick="addToCart('Still Water with Lemon')" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                        <button onclick="addToCart('Still Water with Lemon', 1)" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                                           <i class="material-icons">add</i>
                                         </button>
                                     </td>
@@ -312,7 +315,7 @@
                                 <tr>
                                     <td class="mdl-data-table__cell--non-numeric">Sparkly Water</td>
                                     <td>
-                                        <button onclick="addToCart('Sparkly Water')" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                        <button onclick="addToCart('Sparkly Water', 1)" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                                           <i class="material-icons">add</i>
                                         </button>
                                     </td>
@@ -320,7 +323,7 @@
                                 <tr>
                                     <td class="mdl-data-table__cell--non-numeric">Sparkly Water with Lemon</td>
                                     <td>
-                                        <button onclick="addToCart('Sparkly Water with Lemon')" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                        <button onclick="addToCart('Sparkly Water with Lemon', 1)" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                                           <i class="material-icons">add</i>
                                         </button>
                                     </td>
@@ -347,7 +350,7 @@
                                         <a id="mezzomixDisplay">50% Cola <br /> 50% Fanta</a></td>
                                     <td>Fanta</td>
                                     <td>
-                                        <button onclick="addToCart('Mezzo Mix (' + document.getElementById('mezzomixMixer').value + '0% Coke | ' + (10 - parseInt(document.getElementById('mezzomixMixer').value)) + '0% Fanta)')" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                        <button onclick="addToCart('Mezzo Mix (' + document.getElementById('mezzomixMixer').value + '0% Coke | ' + (10 - parseInt(document.getElementById('mezzomixMixer').value)) + '0% Fanta)', 2)" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                                           <i class="material-icons">add</i>
                                         </button>
                                     </td>
@@ -369,7 +372,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <button onclick="addToCart('Custom Mix (' + document.getElementById('custommixMixer').value + '0% ' + document.getElementById('custommix1').value + ' | ' + (10 - parseInt(document.getElementById('custommixMixer').value)) + '0% ' + document.getElementById('custommix2').value + ')')" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                        <button onclick="addToCart('Custom Mix (' + document.getElementById('custommixMixer').value + '0% ' + document.getElementById('custommix1').value + ' | ' + (10 - parseInt(document.getElementById('custommixMixer').value)) + '0% ' + document.getElementById('custommix2').value + ')', 2)" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                                           <i class="material-icons">add</i>
                                         </button>
                                     </td>
@@ -408,7 +411,7 @@
                                        Milk
                                     </td>
                                     <td>
-                                        <button onclick="addToCart('Coffee (' + document.getElementById('coffeeMilk').value + '0% Coffee | ' + (10 - parseInt(document.getElementById('coffeeMilk').value)) + '0% Milk | ' + document.getElementById('coffeeSugar').value + ' Spoon(s))')" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                        <button onclick="addToCart('Coffee (' + document.getElementById('coffeeMilk').value + '0% Coffee | ' + (10 - parseInt(document.getElementById('coffeeMilk').value)) + '0% Milk | ' + document.getElementById('coffeeSugar').value + ' Spoon(s))', 2)" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                                           <i class="material-icons">add</i>
                                         </button>
                                     </td>
@@ -438,7 +441,7 @@
                                        Milk
                                     </td>
                                     <td>
-                                        <button onclick="addToCart('Tea (' + document.getElementById('teaMilk').value + '0% Tea | ' + (10 - parseInt(document.getElementById('teaMilk').value)) + '0% Milk | ' + document.getElementById('teaSugar').value + ' Spoon(s))')" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                                        <button onclick="addToCart('Tea (' + document.getElementById('teaMilk').value + '0% Tea | ' + (10 - parseInt(document.getElementById('teaMilk').value)) + '0% Milk | ' + document.getElementById('teaSugar').value + ' Spoon(s))', 2)" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                                           <i class="material-icons">add</i>
                                         </button>
                                     </td>
@@ -471,6 +474,18 @@
         <div style="display: none;" id="dialog1">Do you want to print a receipt with your number? If so, you have to pick the receipt up at the bar.</div>
         <div style="display: none;" id="dialog2">The order process failed. Do not close this message. Please go to the bar.</div>
         <div style="display: none;" id="dialog3">There is nothing in your cart. Fill your cart before trying to order!</div>
+        <div style="display: none;" id="dialog4">Please fill in your card info to pay!<br/>
+            <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="text" id="id">
+                <label class="mdl-textfield__label" for="id">ID...</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="security">
+                <label class="mdl-textfield__label" for="security">Security...</label>
+                <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+            <div id="lastId" style="display: none;"></div>
+        </div>
 
         <script type="text/javascript">
 
@@ -486,7 +501,8 @@
 
             }
 
-            function addToCart(item) {
+            function addToCart(item, cost) {
+                total_cost = document.getElementById("total_cost");
                 cart = document.getElementById("cart");
                 cart_tooltip = document.getElementById("cart_tooltip");
                 order_btn = document.getElementById("order");
@@ -496,6 +512,8 @@
 
                     cartCount += 1;
 
+                    total_cost.innerHTML = parseInt(total_cost.innerHTML) + parseInt(cost);
+
                     cart.setAttribute("data-badge", cartCount);
 
                     cart_tooltip.innerHTML = item + "<br />";
@@ -503,6 +521,8 @@
                 } else {
 
                     cartCount += 1;
+
+                    total_cost.innerHTML = parseInt(total_cost.innerHTML) + parseInt(cost);
 
                     cart.setAttribute("data-badge", cartCount);
 
@@ -517,13 +537,15 @@
             function order() {
                 document.getElementById("dialog2").innerHTML = "The order process failed. Do not close this message. Please go to the bar.";
 
+                total_cost = parseInt(document.getElementById("total_cost"));
+
                 cart = document.getElementById("cart");
                 cart_tooltip = document.getElementById("cart_tooltip");
                 order_btn = document.getElementById("order");
                 order_tooltip = document.getElementById("order_tooltip");
 
                 if (cartCount == 0) {
-                    $( "#dialog2" ).dialog( "open" );
+                    $( "#dialog3" ).dialog( "open" );
 
                 } else {
                     $( "#dialog2" ).dialog({
@@ -544,7 +566,7 @@
                     });
 
                     $( "#dialog3" ).dialog({
-                        title: "Your order number",
+                        title: "Please fill your cart!",
                         autoOpen: false,
                         resizable: false,
                         draggable: false,
@@ -560,6 +582,56 @@
                         ]
                     });
 
+                    $( "#dialog4" ).dialog({
+                        title: "Enter payment info",
+                        autoOpen: false,
+                        resizable: false,
+                        draggable: false,
+                        modal: true,
+                        buttons: [
+                        {
+                          text: "Pay",
+                          icon: "ui-icon-check",
+                          click: function() {
+                            $( this ).dialog( "close" );
+                            id = document.getElementById("id").value;
+                            security = document.getElementById("security").value;
+                            tokens = parseInt(document.getElementById("total_cost").innerHTML);
+
+
+                            get("Pay!A1:D20", function(returnValue) {
+                                for (i = 0; i < 20; i++) {
+                                    n = i
+                                    b = i + 1
+                                    if (returnValue[n][0] == "TRUE") {
+                                        if(returnValue[n][1] == id) {
+                                            if(returnValue[n][2] == security) {
+                                                if (returnValue[n][3] >= tokens) {
+                                                    document.getElementById("lastId").innerHTML = b;
+                                                    $( "#dialog1" ).dialog( "open" );
+                                                    return
+                                                } else {
+                                                    alert("Insufficient Funds! You have " + returnValue[n][3] + " but need " + tokens)
+                                                    return
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                          }
+                        }, {
+                          text: "Cancel",
+                          icon: "ui-icon-close",
+                          click: function() {
+                            $( this ).dialog( "close" );
+                          }
+                        }
+                        ]
+                    });
+
+                    $( "#dialog4" ).dialog( "open" );
+
                     $( "#dialog1" ).dialog({
                         title: "Print Number?",
                         autoOpen: false,
@@ -572,11 +644,13 @@
                           icon: "ui-icon-check",
                           click: function() {
                             $( this ).dialog( "close" );
-                            fillEmptySlot(cart_tooltip.innerHTML, "true", function(number) {
+                            fillEmptySlot(cart_tooltip.innerHTML, "true", total_cost.innerHTML, function(number) {
                                 document.getElementById("dialog2").innerHTML = "Thank you for ordering! Your order number is <b>" + number + "</b>. For the status of your order, check on the monitor by the bar. <br /><br />You can pick up your receipt at the bar."
                                 $( "#dialog2" ).dialog( "open" );
                             });
                             cartCount = 0;
+
+                            total_cost.innerHTML = "0";
 
                             cart.setAttribute("data-badge", cartCount);
                             cart_tooltip.innerHTML = "<b>Cart is empty!</b>";
@@ -596,7 +670,7 @@
                           click: function() {
                             $( this ).dialog( "close" );
                             print = false;
-                            fillEmptySlot(cart_tooltip.innerHTML, "false", function(number) {
+                            fillEmptySlot(cart_tooltip.innerHTML, "false", total_cost.innerHTML, function(number) {
                                 document.getElementById("dialog2").innerHTML = "Thank you for ordering! Your order number is <b>" + number + "</b>. For the status of your order, check on the monitor by the bar."
                                 $( "#dialog2" ).dialog( "open" );
                             });
@@ -605,6 +679,7 @@
                             cart.setAttribute("data-badge", cartCount);
                             cart_tooltip.innerHTML = "<b>Cart is empty!</b>";
 
+                            total_cost.innerHTML = "0";
 
                             order_btn.setAttribute("disabled", "disabled");
                             order_tooltip.innerHTML = "Add something to the cart before you can order!";
@@ -617,19 +692,21 @@
                       ]
                     });
 
-                    $( "#dialog1" ).dialog( "open" );
 
                 }
 
             }
 
             function emptyCart() {
+                total_cost = document.getElementById("total_cost");
                 cart = document.getElementById("cart");
                 cart_tooltip = document.getElementById("cart_tooltip");
                 order_btn = document.getElementById("order");
                 order_tooltip = document.getElementById("order_tooltip");
 
                 cartCount = 0;
+
+                total_cost.innerHTML = 0;
 
                 cart.setAttribute("data-badge", cartCount);
                 cart_tooltip.innerHTML = "<b>Cart is empty!</b>";
@@ -650,16 +727,26 @@
                 });
             }
 
-            fillEmptySlot = function(value, print, number) {
+            fillEmptySlot = function(value, print, total_cost, number) {
+                total_cost = parseInt(document.getElementById("total_cost").innerHTML);
+                id = parseInt(document.getElementById("lastId").innerHTML)
                 getEmptySlot(function(emptySlot) {
-                    setRow("Order!A" + emptySlot, ["true"]);
-                    setRow("Order!B" + emptySlot, [value]);
-                    setRow("Order!E" + emptySlot, [print]);
-                    get("Order!F1", function(largestNumber) {
-                        number(parseInt(largestNumber) + 1);
-                        setRow("Order!F1", [parseInt(largestNumber) + 1]);
-                        setRow("Order!C" + emptySlot, [parseInt(largestNumber) + 1]);
+                    get("Pay!D" + id + ":D" + id, function(returnValue) {
+                        console.log(returnValue[0]);
+                        if(parseInt(returnValue[0]) >= total_cost) {
+                            setRow("Order!A" + emptySlot + ":E" + emptySlot, ["true", value, null, null, print])
+                            newToken = parseInt(returnValue[0]) - total_cost;
+                            setRow("Pay!D" + id, [newToken])
+                            get("Order!F1", function(largestNumber) {
+                                number(parseInt(largestNumber) + 1);
+                                setRow("Order!F1", [parseInt(largestNumber) + 1]);
+                                setRow("Order!C" + emptySlot, [parseInt(largestNumber) + 1]);
+                            });
+                        } else {
+                            alert("Something messed up, please contact the bar!")
+                        }
                     });
+
                 });
             }
 
