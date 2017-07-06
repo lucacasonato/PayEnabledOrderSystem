@@ -222,7 +222,6 @@ function setwebcam2(options)
 
 function setimg()
 {
-	document.getElementById("result").innerHTML="";
     if(stype==2)
         return;
     var qrfile = document.getElementById("qrfile");

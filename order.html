@@ -24,8 +24,8 @@
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
         <script src="//code.jquery.com/jquery-1.12.4.js"></script>
         <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-
+        <script src="src/llqrcode.js"></script>
+        <script src="src/webqr.js"></script>
     </head>
     <!-- Wide card with share menu button -->
     <style>
@@ -474,7 +474,9 @@
         <div style="display: none;" id="dialog1">Do you want to print a receipt with your number? If so, you have to pick the receipt up at the bar.</div>
         <div style="display: none;" id="dialog2">The order process failed. Do not close this message. Please go to the bar.</div>
         <div style="display: none;" id="dialog3">There is nothing in your cart. Fill your cart before trying to order!</div>
+        <center>
         <div style="display: none;" id="dialog4">Please fill in your card info to pay!<br/>
+            <b>Scan your pass? Click here: </b><input id="qrfile" type="file" name="file" accept="image/*" capture="camera" onchange="handleFiles(this.files)">
             <div class="mdl-textfield mdl-js-textfield">
                 <input class="mdl-textfield__input" type="text" id="id">
                 <label class="mdl-textfield__label" for="id">ID...</label>
@@ -486,7 +488,9 @@
             </div>
             <div id="lastId" style="display: none;"></div>
         </div>
+        </center>
 
+        <canvas hidden id="qr-canvas"></canvas>
         <script type="text/javascript">
 
             var snackbarContainer = document.getElementById("toast");
@@ -588,6 +592,7 @@
                         resizable: false,
                         draggable: false,
                         modal: true,
+                        width: 500,
                         buttons: [
                         {
                           text: "Pay",
@@ -750,6 +755,17 @@
                 });
             }
 
+            initCanvas(800, 600)
+            qrcode.callback = process;
+            setimg()
+
+
+            function process(data) {
+                console.log(data);
+                dataProcessed = data.split("|")
+                document.getElementById("id").value = dataProcessed[0];
+                document.getElementById("security").value = dataProcessed[1]
+            }
         </script>
     </body>
 </html>

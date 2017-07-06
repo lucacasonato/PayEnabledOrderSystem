@@ -11,7 +11,13 @@
     </body>
     <script>
         initCanvas(800, 600)
-        qrcode.callback = read;
+        qrcode.callback = process;
         setimg()
+
+
+        function process(data) {
+            dataProcessed = data.split("|")
+            document.getElementById("result").innerHTML = dataProcessed[0] + "<br /><b>" + dataProcessed[1] + "</b>";
+        }
     </script>
 </html>
